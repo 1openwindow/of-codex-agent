@@ -1,0 +1,15 @@
+# local secrets and codex config
+.env
+.env.*
+!.env.example
+# never commit a real personal Codex config
+config.toml
+
+# generated/runtime files
+node_modules/
+*.log
+
+# editor/os
+.DS_Store
+.vscode/
+.idea/

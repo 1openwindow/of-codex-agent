@@ -1,0 +1,33 @@
+# ── Codex CLI ↔ Azure AI Foundry ────────────────────────────────────────────
+# Copy the relevant parts into your personal Codex config at ~/.codex/config.toml
+# (this file is just an example; Codex does NOT read config.example.toml).
+#
+# Auth: export your key before launching Codex
+#   export FOUNDRY_API_KEY="<your-azure-ai-foundry-key>"
+
+# Use the Azure provider and your Foundry *deployment name* as the model.
+model_provider = "azure"
+model = "gpt-5"                     # <-- your Azure deployment name, not the base model id
+
+[model_providers.azure]
+name = "Azure AI Foundry"
+# Azure OpenAI–style resource endpoint (most common):
+base_url = "https://<your-resource>.openai.azure.com/openai"
+# Newer unified Foundry endpoint also works:
+# base_url = "https://<your-resource>.services.ai.azure.com/openai"
+
+env_key = "FOUNDRY_API_KEY"   # Codex reads the key from this env var
+query_params = { api-version = "2025-04-01-preview" }
+
+# Wire protocol:
+#   "responses" — for GPT-5 / reasoning-class deployments (recommended)
+#   "chat"      — for chat-completions deployments (gpt-4o, gpt-4.1, …)
+wire_api = "responses"
+
+# ── Notes ───────────────────────────────────────────────────────────────────
+# • `model` MUST be the deployment name you created in Azure AI Foundry, which is
+#   appended to base_url as /deployments/<model>/... by Codex automatically.
+# • Pick an api-version your deployment supports (Foundry portal → deployment →
+#   "Target URI" shows one). Bump it if you get a 404/unsupported-version error.
+# • Entra ID (keyless) instead of an API key is possible via a bearer token, but
+#   key-based auth above is the simplest path for a demo.
