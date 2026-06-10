@@ -36,7 +36,7 @@ so the deploy is exercised end-to-end:
 ```bash
 git clone https://github.com/1openwindow/of-codex-agent
 cd of-codex-agent
-npx skills add 1openwindow/open-foundry   # install the deploy skill (once)
+npx skills add 1openwindow/open-foundry --agent codex -y   # install the deploy skill (once)
 codex                                      # open the Codex CLI here
 ```
 
