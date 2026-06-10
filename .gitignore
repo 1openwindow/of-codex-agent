@@ -1,13 +1,25 @@
-# local secrets and codex config
+# local secrets and azd env
 .env
 .env.*
 !.env.example
+.azure/
+
 # never commit a real personal Codex config
 config.toml
 
 # generated/runtime files
 node_modules/
 *.log
+
+# open-foundry deploy skill — installed via `npx skills add`; keep the sample fresh BYO
+/.agents/skills/open-foundry/
+
+# open-foundry deploy output — regenerated on every deploy; keep the sample fresh BYO
+Dockerfile
+.dockerignore
+azure.yaml
+agent.yaml
+agent.manifest.yaml
 
 # editor/os
 .DS_Store
